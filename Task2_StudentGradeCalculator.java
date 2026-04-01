@@ -6,40 +6,39 @@ public class Task2_StudentGradeCalculator {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter number of subjects: ");
-        int subjects = input.nextInt();
+        System.out.println("===== Student Grade Calculator =====");
 
-        int totalMarks = 0;
+        System.out.print("Enter total number of subjects: ");
+        int totalSubjects = input.nextInt();
 
-        for(int i = 1; i <= subjects; i++) {
+        int sumOfMarks = 0;
+
+        for (int i = 1; i <= totalSubjects; i++) {
             System.out.print("Enter marks for subject " + i + ": ");
-            int marks = input.nextInt();
-            totalMarks = totalMarks + marks;
+            int subjectMarks = input.nextInt();
+            sumOfMarks += subjectMarks;
         }
 
-        double average = (double) totalMarks / subjects;
+        double averagePercentage = (double) sumOfMarks / totalSubjects;
 
-        char grade;
+        char finalGrade;
 
-        if(average >= 90) {
-            grade = 'A';
-        }
-        else if(average >= 80) {
-            grade = 'B';
-        }
-        else if(average >= 70) {
-            grade = 'C';
-        }
-        else if(average >= 60) {
-            grade = 'D';
-        }
-        else {
-            grade = 'F';
+        if (averagePercentage >= 90) {
+            finalGrade = 'A';
+        } else if (averagePercentage >= 80) {
+            finalGrade = 'B';
+        } else if (averagePercentage >= 70) {
+            finalGrade = 'C';
+        } else if (averagePercentage >= 60) {
+            finalGrade = 'D';
+        } else {
+            finalGrade = 'F';
         }
 
-        System.out.println("\nTotal Marks: " + totalMarks);
-        System.out.println("Average Percentage: " + average);
-        System.out.println("Grade: " + grade);
+        System.out.println("\n===== Result =====");
+        System.out.println("Total Marks Obtained: " + sumOfMarks);
+        System.out.println("Average Percentage: " + averagePercentage + "%");
+        System.out.println("Your Final Grade is: " + finalGrade);
 
         input.close();
     }
