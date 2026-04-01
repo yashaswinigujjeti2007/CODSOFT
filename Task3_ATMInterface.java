@@ -6,55 +6,57 @@ public class Task3_ATMInterface {
 
         Scanner input = new Scanner(System.in);
 
-        double balance = 1000;
-        int choice;
+        double accountBalance = 1000;
+        int userChoice;
+
+        System.out.println("===== Welcome to My ATM Machine =====");
 
         do {
 
-            System.out.println("\n===== ATM MENU =====");
-            System.out.println("1. Check Balance");
-            System.out.println("2. Deposit Money");
-            System.out.println("3. Withdraw Money");
+            System.out.println("\n----- ATM MENU -----");
+            System.out.println("1. Check Account Balance");
+            System.out.println("2. Add Money");
+            System.out.println("3. Withdraw Cash");
             System.out.println("4. Exit");
 
-            System.out.print("Enter your choice: ");
-            choice = input.nextInt();
+            System.out.print("Please enter your choice: ");
+            userChoice = input.nextInt();
 
-            switch(choice) {
+            switch(userChoice) {
 
                 case 1:
-                    System.out.println("Current Balance: " + balance);
+                    System.out.println("Your current balance is: ₹" + accountBalance);
                     break;
 
                 case 2:
-                    System.out.print("Enter amount to deposit: ");
-                    double deposit = input.nextDouble();
-                    balance = balance + deposit;
-                    System.out.println("Deposit successful.");
+                    System.out.print("Enter amount to add: ₹");
+                    double depositAmount = input.nextDouble();
+                    accountBalance += depositAmount;
+                    System.out.println("Money added successfully.");
                     break;
 
                 case 3:
-                    System.out.print("Enter amount to withdraw: ");
-                    double withdraw = input.nextDouble();
+                    System.out.print("Enter amount to withdraw: ₹");
+                    double withdrawAmount = input.nextDouble();
 
-                    if(withdraw <= balance) {
-                        balance = balance - withdraw;
-                        System.out.println("Withdrawal successful.");
-                    }
-                    else {
-                        System.out.println("Insufficient balance.");
+                    if(withdrawAmount <= accountBalance) {
+                        accountBalance -= withdrawAmount;
+                        System.out.println("Please collect your cash.");
+                        System.out.println("Withdrawal completed successfully.");
+                    } else {
+                        System.out.println("Sorry, insufficient balance.");
                     }
                     break;
 
                 case 4:
-                    System.out.println("Thank you for using the ATM.");
+                    System.out.println("Thank you for using My ATM.");
                     break;
 
                 default:
-                    System.out.println("Invalid choice.");
+                    System.out.println("Invalid option. Please try again.");
             }
 
-        } while(choice != 4);
+        } while(userChoice != 4);
 
         input.close();
     }
